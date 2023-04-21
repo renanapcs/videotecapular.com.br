@@ -320,31 +320,31 @@ s) Set configuration password
 q) Quit config
 
 n/r/c/s/q> n
-```
 
-Em seguida ele pergunta o nome do nosso remoto(drive,cloud qualquer provedor que iremos configurar) de o nome que você quiser, nesse projeto chamaremos de **gdrive**.
 
-**name> gdrive**
+#Em seguida ele pergunta o nome do nosso remoto(drive,cloud qualquer provedor que iremos #configurar de o nome que você quiser, nesse projeto chamaremos de **gdrive**.
 
-a próxima etapa é dizer qual provedor iremos usar. nosso é o google drive então digite drive
 
-**Type of storage to configure.**
+name> gdrive
 
-**Choose a number from below, or type in your own value**
+#a próxima etapa é dizer qual provedor iremos usar. nosso é o google drive então digite drive
 
-**[snip]**
+Type of storage to configure.
 
-**XX / Google Drive**
+Choose a number from below, or type in your own value
 
-`   `**\ "drive"**
+[snip]
 
-**[snip]**
+XX / Google Drive
 
-**Storage> drive**
+\ "drive"
 
-A próxima tela é o tipo de autenticação por credenciais do Google Cloud. vamos pular e deixar em branco pressionando enter.
+[snip]
 
-```console
+Storage> drive
+
+#A próxima tela é o tipo de autenticação por credenciais do Google Cloud. vamos pular e deixar #em branco pressionando enter.
+
 Google Application Client Id - leave blank normally.
 
 client\_id> enter
@@ -352,13 +352,14 @@ client\_id> enter
 Google Application Client Secret - leave blank normally.
 
 client\_secret> enter
-```
 
-Aqui vamos configurar o tipo de permissão que daremos as pastas e arquivos para o rclone. Nesse caso scop **1** acesso total 
-```console
+
+#Aqui vamos configurar o tipo de permissão que daremos as pastas e arquivos para o rclone. 
+#Nesse caso scop **1** acesso total 
+
 Scope that rclone should use when requesting access from drive.
 
-**Choose a number from below, or type in your own value**
+Choose a number from below, or type in your own value
 
 1 / Full access all files, excluding Application Data Folder.
 
@@ -372,9 +373,9 @@ Scope that rclone should use when requesting access from drive.
 
 3 | These are visible in the drive website.
 
-| File authorization is revoked when the user deauthorizes the app.**
+| File authorization is revoked when the user deauthorizes the app.
 
-   \ "drive.file"**
+   \ "drive.file"
 
 / Allows read and write access to the Application Data folder.
 
@@ -390,17 +391,15 @@ Scope that rclone should use when requesting access from drive.
 
 scope> 1
 
-```
 
-Aqui é para passar as credenciais via arquivo json como exemplo estamos usando o google drive essas credenciais precisa ser solicitada no google cloud  assim como fizemos nas 2 primeiras perguntas, também deixaremos em branco pressionando enter.
+#Aqui é para passar as credenciais via arquivo json como exemplo estamos usando o google drive #essas credenciais precisa ser solicitada no google cloud  assim como fizemos nas 2 primeiras #perguntas, também deixaremos em branco pressionando enter.
 
-```console
-Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.**
+Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.
 
 service\_account\_file>
-```
+
 Agora vamos configurar o acesso a nosso google Drive via autenticação web. digite **y** em seguida enter.
-```console
+
 Remote config
 
 Use web browser to automatically authenticate rclone with remote?
@@ -486,12 +485,8 @@ para confirmar saia da tela do rclone config precione Ctrl + C
 
 
 
+Agora execute o comando:
 
-
-
-
-
-Agora execute o comando 
 ```console
 rclone lsd gdrive:
 ```
