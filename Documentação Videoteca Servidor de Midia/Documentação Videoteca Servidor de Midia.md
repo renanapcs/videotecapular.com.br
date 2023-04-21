@@ -321,14 +321,15 @@ q) Quit config
 
 n/r/c/s/q> n
 
+```
+Em seguida ele pergunta o nome do nosso remoto(drive,cloud qualquer provedor que iremos configurar de o nome que você quiser, nesse projeto chamaremos de **gdrive**.
 
-#Em seguida ele pergunta o nome do nosso remoto(drive,cloud qualquer provedor que iremos #configurar de o nome que você quiser, nesse projeto chamaremos de **gdrive**.
 
-
+```console
 name> gdrive
-
-#a próxima etapa é dizer qual provedor iremos usar. nosso é o google drive então digite drive
-
+```
+A próxima etapa é dizer qual provedor iremos usar. nosso é o google drive então digite drive
+```console
 Type of storage to configure.
 
 Choose a number from below, or type in your own value
@@ -342,9 +343,10 @@ XX / Google Drive
 [snip]
 
 Storage> drive
+```
+A próxima tela é o tipo de autenticação por credenciais do Google Cloud. vamos pular e deixar em branco pressionando enter.
 
-#A próxima tela é o tipo de autenticação por credenciais do Google Cloud. vamos pular e deixar #em branco pressionando enter.
-
+```console
 Google Application Client Id - leave blank normally.
 
 client\_id> enter
@@ -352,11 +354,12 @@ client\_id> enter
 Google Application Client Secret - leave blank normally.
 
 client\_secret> enter
+```
 
+Aqui vamos configurar o tipo de permissão que daremos as pastas e arquivos para o rclone. 
+Nesse caso scop **1** acesso total 
 
-#Aqui vamos configurar o tipo de permissão que daremos as pastas e arquivos para o rclone. 
-#Nesse caso scop **1** acesso total 
-
+```console
 Scope that rclone should use when requesting access from drive.
 
 Choose a number from below, or type in your own value
@@ -390,16 +393,18 @@ Choose a number from below, or type in your own value
   \ "drive.metadata.readonly"
 
 scope> 1
+```
 
+Aqui é para passar as credenciais via arquivo json como exemplo estamos usando o google drive essas credenciais precisa ser solicitada no google cloud  assim como fizemos nas 2 primeiras perguntas, também deixaremos em branco pressionando enter.
 
-#Aqui é para passar as credenciais via arquivo json como exemplo estamos usando o google drive #essas credenciais precisa ser solicitada no google cloud  assim como fizemos nas 2 primeiras #perguntas, também deixaremos em branco pressionando enter.
-
+```console
 Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.
 
 service\_account\_file>
-
+```
 Agora vamos configurar o acesso a nosso google Drive via autenticação web. digite **y** em seguida enter.
 
+```console
 Remote config
 
 Use web browser to automatically authenticate rclone with remote?
