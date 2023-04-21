@@ -93,7 +93,7 @@ depois clique em **Firewall** e **adicionar regra**
 
 Na imagem abaixo adicionamos a porta 8096 para ficar acessível por qualquer ip na rede.
 
-![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.001.png)
+[](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.001.png)
 
 Clique em salvar, e repita o mesmo processo para as demais portas. 
 
