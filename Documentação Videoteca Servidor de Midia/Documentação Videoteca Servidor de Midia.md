@@ -150,7 +150,7 @@ docker login
 
 Aguarde a mensagem  Login succeeded
 
-![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.002.png)
+[](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.002.png)
 
 
 
@@ -248,7 +248,7 @@ Na tela inicial, se você clicar em criar biblioteca, isso também é oferecido 
 Clique no texto em azul **Gostaria de criar uma agora?**
 
 
-i![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.009.png)
+![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.009.png)
 
 
 Agora você deve estar em Bibliotecas.
