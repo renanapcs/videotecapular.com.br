@@ -36,7 +36,7 @@ wget <https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-in
 Vamos atualizar nosso repositório local com o comando  **apt  update** verificar as dependências de instalação com o comando **apt install ca-certificates**
 
 ```console
-apt-get update && apt-get install ca-certificates**
+apt-get update && apt-get install ca-certificates
 ```
 
 Agora com tudo ok, vamos fazer a instalação do hestiacp.
@@ -160,7 +160,7 @@ Com o ambiente pronto faremos a instalação do jellyfin seguindo a documentaç�
 
 <https://jellyfin.org/docs/general/installation/container>
 
-Precisamos criar as pastas para os volumes do conteiner do Jellyfi. 
+Precisamos criar as pastas para os volumes do conteiner do Jellyfin. 
 
 montaremos esses volumes em **/mnt/drive/jellyfin/**
 
@@ -344,136 +344,144 @@ a próxima etapa é dizer qual provedor iremos usar. nosso é o google drive ent
 
 A próxima tela é o tipo de autenticação por credenciais do Google Cloud. vamos pular e deixar em branco pressionando enter.
 
-**Google Application Client Id - leave blank normally.**
+```console
+Google Application Client Id - leave blank normally.
 
-**client\_id> enter**
+client\_id> enter
 
-**Google Application Client Secret - leave blank normally.**
+Google Application Client Secret - leave blank normally.
 
-**client\_secret> enter**
+client\_secret> enter
+```
 
 Aqui vamos configurar o tipo de permissão que daremos as pastas e arquivos para o rclone. Nesse caso scop **1** acesso total 
-
-**Scope that rclone should use when requesting access from drive.**
+```console
+Scope that rclone should use when requesting access from drive.
 
 **Choose a number from below, or type in your own value**
 
-` `**1 / Full access all files, excluding Application Data Folder.**
+1 / Full access all files, excluding Application Data Folder.
 
-`   `**\ "drive"**
+  \ "drive"
 
-` `**2 / Read-only access to file metadata and file contents.**
+2 / Read-only access to file metadata and file contents.
 
-`   `**\ "drive.readonly"**
+  \ "drive.readonly"
 
-`   `**/ Access to files created by rclone only.**
+/ Access to files created by rclone only.
 
-` `**3 | These are visible in the drive website.**
+3 | These are visible in the drive website.
 
-`   `**| File authorization is revoked when the user deauthorizes the app.**
+| File authorization is revoked when the user deauthorizes the app.**
 
-`   `**\ "drive.file"**
+   \ "drive.file"**
 
-`   `**/ Allows read and write access to the Application Data folder.**
+/ Allows read and write access to the Application Data folder.
 
-` `**4 | This is not visible in the drive website.**
+4 | This is not visible in the drive website.
 
-`   `**\ "drive.appfolder"**
+   \ "drive.appfolder"
 
-`   `**/ Allows read-only access to file metadata but**
+/ Allows read-only access to file metadata but**
 
-` `**5 | does not allow any access to read or download file content.**
+5 | does not allow any access to read or download file content.
 
-`   `**\ "drive.metadata.readonly"**
+  \ "drive.metadata.readonly"
 
-**scope> 1**
+scope> 1
 
+```
 
 Aqui é para passar as credenciais via arquivo json como exemplo estamos usando o google drive essas credenciais precisa ser solicitada no google cloud  assim como fizemos nas 2 primeiras perguntas, também deixaremos em branco pressionando enter.
 
-**Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.**
+```console
+Service Account Credentials JSON file path - needed only if you want use SA instead of interactive login.**
 
-**service\_account\_file>**
-
+service\_account\_file>
+```
 Agora vamos configurar o acesso a nosso google Drive via autenticação web. digite **y** em seguida enter.
+```console
+Remote config
 
-**Remote config**
+Use web browser to automatically authenticate rclone with remote?
 
-**Use web browser to automatically authenticate rclone with remote?**
+\* Say Y if the machine running rclone has a web browser you can use
 
-` `**\* Say Y if the machine running rclone has a web browser you can use**
+\* Say N if running rclone on a (remote) machine without web browser access
 
-` `**\* Say N if running rclone on a (remote) machine without web browser access**
+If not sure try Y. If Y failed, try N.
 
-**If not sure try Y. If Y failed, try N.**
+y) Yes
 
-**y) Yes**
+n) No
 
-**n) No**
-
-**y/n> y**
-
+y/n> y
+```
 Foi gerado um link para autenticação copie a url e cole no seu navegar, de preferência um que você já tenha sua conta google logada. de as permissões até aparecer a tela **Login sucesso!** essa etapa só vai funcionar para conexões locais. caso esteja fazendo em um servidor remoto você pode fazer uma conexão tunel ssh ou abrir uma vpn para seu servidor que dá no mesmo. mas configurar uma vpn é mais complicado.
 
-installe o putty apt install putty e rode o sequinte comando alterando os dados para seu servidor remoto login e senha.
+installe o putty  e rode o sequinte comando alterando os dados para seu servidor remoto login e senha.
 
+```console
+apt install putty
 sudo putty -ssh ipdoseuservidor -P 22 -l root -pw senhadoseuservidor -L 53682:127.0.0.1:53682
 
-exemplo: 
+#exemplo: 
 
 sudo putty -ssh 177.50.80.50 -P 22 -l joao -pw senhaforte -L 53682:127.0.0.1:53682
-
+```
 Caso seu login não seja root troque o root pelo seu login.
 
-O Putty deve ser aberto vai aceite a conexão e as chaves. pronto abriu o terminal do putty. volte para o terminal que já esta aberto com o link de autenticação copie e cole no navegador o restante do processo é o mesmo já descrito acima.
+O Putty deve ser aberto aceite a conexão e as chaves. pronto abriu o terminal do putty. volte para o terminal que já esta aberto com o link de autenticação copie e cole no navegador o restante do processo é o mesmo já descrito acima.
 
-**If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth**
+```console
+If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth
 
-**Log in and authorize rclone for access**
+Log in and authorize rclone for access
 
-**Waiting for code...**
+Waiting for code...
 
-**Got code**
+Got code
 
-**Configure this as a Shared Drive (Team Drive)?**
+Configure this as a Shared Drive (Team Drive)?
 
-**y) Yes**
+y) Yes
 
-**n) No**
+n) No
 
-**y/n> n**
+y/n> n
 
-**--------------------**
+--------------------
 
-**[remote]**
+[remote]
 
-**client\_id =** 
+client\_id =
 
-**client\_secret =** 
+client\_secret =
 
-**scope = drive**
+scope = drive
 
-**root\_folder\_id =** 
+root\_folder\_id =
 
-**service\_account\_file =**
+service\_account\_file =
 
-**token = {"access\_token":"XXX","token\_type":"Bearer","refresh\_token":"XXX","expiry":"2014-03-16T13:57:58.955387075Z"}**
+token = {"access\_token":"XXX","token\_type":"Bearer","refresh\_token":"XXX","expiry":"2014-03-16T13:57:58.955387075Z"}
 
-**--------------------**
+--------------------
 
-**y) Yes this is OK**
+y) Yes this is OK
 
-**e) Edit this remote**
+e) Edit this remote
 
-**d) Delete this remote**
+d) Delete this remote
 
-**y/e/d> y**
+y/e/d> y
 
 Pronto se você chegou até aqui seu drive já está configurado. 
 
 para confirmar saia da tela do rclone config precione Ctrl + C
 
 
+```
 
 
 
@@ -483,12 +491,16 @@ para confirmar saia da tela do rclone config precione Ctrl + C
 
 
 
-
-Agora execute o comando **rclone lsd gdrive:** Se tudo ocorreu bem ele deve listar os diretórios do seu google drive.
+Agora execute o comando 
+```console
+rclone lsd gdrive:
+```
+Se tudo ocorreu bem ele deve listar os diretórios do seu google drive.
 
 ![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.012.png)
 
 ![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.013.png)
+
 
 Agora precisamos montar essa unidade remota em uma pasta em nosso sistema.
 
@@ -496,30 +508,96 @@ Lembra da pasta que criamos para as mídias do jellyfin, agora vamos montar o gd
 
 
 Montando GDRIVE
+Priemro vamos habilitar permissão para os usuarios no modulo fuse.
+```console
+nano /etc/fuse.config
+```
+Apague o # da linha user_allow_other.
 
-`    `**rclone mount --allow-non-empty -v gdrive:/mnt/drive/jellyfin/Media &**
+```console
+# The file /etc/fuse.conf allows for the following parameters:
+#
+# user_allow_other - Using the allow_other mount option works fine as root, in
+# order to have it work as user you need user_allow_other in /etc/fuse.conf as
+# well. (This option allows users to use the allow_other option.) You need
+# allow_other if you want users other than the owner to access a mounted fuse.
+# This option must appear on a line by itself. There is no value, just the
+# presence of the option.
+
+user_allow_other
+
+
+# mount_max = n - this option sets the maximum number of mounts.
+# Currently (2014) it must be typed exactly as shown
+# (with a single space before and after the equals sign).
+
+#mount_max = 1000
+```
+Ctrl + O pra salvar e Ctrl + X pra sair.
+
+Agora rode o comando para montagem da unidade.
+
+```console
+rclone mount --allow-non-empty -v gdrive:/mnt/drive/jellyfin/Media &
+```
 
 libere acesso a leitura e gravação na pasta para evitar problema com outros serviços como o jellyfin 
 
 execute o comando 
-
-**chmod -R 777 /mnt/drive/jellyfin/Media**
+```console
+chmod -R 777 /mnt/drive/jellyfin/Media
+```
 
 Agora vamos conferir se a pasta foi montada e se nossos arquivos já estão disponíveis.
 
 execute o comando **ls**
-
-**ls -la /mnt/drive/jellyfin/Media**
+```console
+ls -la /mnt/drive/jellyfin/Media
+```
 
 Se tudo ocorreu bem agora você está vendo seus documentos disponíveis na pasta Media.
 
 Agora vamos garantir que a montagem sejá feita de forma automática caso precise reiniciar o servidor. usaremos o [crontab e] execute o comando:
 
-**crontab -e** 
-
+```console
+crontab -e
+```
+Se le te perguntar como abrir digite 1 para editar com "nano"
 Adicione essa linha:
 
+```console
 @reboot sleep 240 && rclone mount --allow-non-empty gdrive: /mnt/drive/jellyfin/Media &
+```
+
+
+```console
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
+@reboot sleep 240 && rclone mount --allow-non-empty gdrive: /mnt/drive/jellyfin/Media &
+
+```
 
 Esse comando automatiza a tarefa de montagem do nosso drive. o @reboot sleep 240 && 
 
@@ -528,11 +606,17 @@ Diz, após o inicialização aguarde 4 minutos representado por  240 segundos &&
 Esse tempo de espera é necessário para aguardar o sistema montar todo o sistema de diretório e iniciar os serviços necessários.
 
 
-Ufa… agora temos um servidor que deve funcionar perfeitamente com as mídias instaladas via cloud. 
+Ufa… agora temos um servidor, que deve funcionar perfeitamente com as mídias instaladas via cloud. 
 
-Vamos dar um reboot no jellyfin execudando o comando **docker stop jellyfin**
+Vamos dar um reboot no jellyfin execudando o comando:
+```console
+docker stop jellyfin
+```
 
-em seguida **docker start jellyfin**
+Em seguida:
+```console
+docker start jellyfin
+```
 
 Agora é só acessar o Jellyfin, ir para bibliotecas e clicar em **Rastrear todas as Bibliotecas.**
 
@@ -555,8 +639,9 @@ Caso precise implantar mais alguma aplicação podemos fazer pelo casaOS de form
 
 Instalando o CasaOS para gerenciar os contêineres e arquivos.
 
-
+```console
 curl -fsSL https://get.casaos.io | sudo bash
+```
 
 Aguarde o término da instalação, se tudo ocorrer bem, no final o casaOS informa o link de acesso.
 
