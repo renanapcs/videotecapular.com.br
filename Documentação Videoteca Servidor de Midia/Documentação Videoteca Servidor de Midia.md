@@ -27,17 +27,25 @@ Instalando o hestiacp vamos seguir a documentação oficial do projeto hestia. h
 
 Faremos o download do pacote.
 
-**wget** <https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh>
+
+```console
+wget <https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh>
+```
+
 
 Vamos atualizar nosso repositório local com o comando  **apt  update** verificar as dependências de instalação com o comando **apt install ca-certificates**
 
-` `**apt-get update && apt-get install ca-certificates**
+```console
+apt-get update && apt-get install ca-certificates**
+```
 
 Agora com tudo ok, vamos fazer a instalação do hestiacp.
 
 Execute o comando e aguarde o término da instalação preste atenção na mensagem no final da instalação nela você encontrará os dados para seu primeiro acesso ao painel de controle.
 
-**bash hst-install.sh**
+```console
+bash hst-install.sh
+```
 
 CPanel instalado e você já tem o endereço de acesso seu ip ou dominio:8083 
 
@@ -97,15 +105,19 @@ Mais tarde voltaremos no cPanel para configurar nosso Domínio, subdomínios e s
 Agora que temos nosso Backend base, vamos partir para instalação do docker nesse projeto não utilizaremos o docker-compose, usaremos o docker puro.
 
 A instalação é simples 
+```console
+apt update #para atualizar nosso sistema e dependência.
+```
 
-**apt update** para atualizar nosso sistema e dependência.
-
-**apt install docker** 
+```console
+apt install docker
+```
 
 faça login no docker 
 
-**docker login**
-
+```console
+docker login
+```
 **login? docker ?** 
 
 Calma, não se desespere! se você não sabe o que é o docker ou não tem um login no docker hub. Não se preocupe, aqui você vai aprender obásico para subir seu backend para suas aplicações web de forma simples e descomplicada. 
@@ -131,7 +143,10 @@ volte para o terminal e
 
 digite o comando.
 
-**docker login** se sua instalação ocorreu bem ele vai te pedir seu username. insira seu usuário que voce criou no docker hub. em seguida ele pedirá sua senha.  
+```console
+docker login
+```
+ se sua instalação ocorreu bem ele vai te pedir seu username. insira seu usuário que voce criou no docker hub. em seguida ele pedirá sua senha.  
 
 Aguarde a mensagem  Login succeeded
 
@@ -149,21 +164,23 @@ Precisamos criar as pastas para os volumes do conteiner do Jellyfi.
 
 montaremos esses volumes em **/mnt/drive/jellyfin/**
 
-**mkdir /mnt/drive/jellyfin/config**
+```console
+mkdir /mnt/drive/jellyfin/config
 
-**mkdir /mnt/drive/jellyfin/cache**
+mkdir /mnt/drive/jellyfin/cache
 
-**mkdir /mnt/drive/jellyfin/Media**
-
+mkdir /mnt/drive/jellyfin/Media
+```
 
 Agora podemos criar os volumes 
 
-**docker volume create jellyfin-config**
+```console
+docker volume create jellyfin-config
 
-**docker volume create jellyfin-cache**
+docker volume create jellyfin-cache
 
-**docker volume create jellyfin-Media**
-
+docker volume create jellyfin-Media
+```
 ![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.003.png)
 
 Se ao copiar e colar o comando você receberá uma mensagem de erro. 
@@ -176,29 +193,36 @@ Na imagem de exemplo das 2 primeiras pastas eu já tinha no meu servidor **/mnt/
 
 Ambiente preparado, vamos rodar o script para baixar e instalar o conteiner do jellyfin.
 
-**docker run -d \**
+```console
 
-`  `**--name jellyfin \**
+docker run -d \
 
-`  `**--privileged \**
+    -name jellyfin \
 
-`  `**--net=host \**
+    --privileged \
 
-`  `**--volume /mnt/drive/jellyfin/config:/config \**
+    --net=host \
 
-`  `**--volume /mnt/drive/jellyfin/cache:/cache \**
+    --volume /mnt/drive/jellyfin/config:/config \
 
-`  `**--mount type=bind,source=/mnt/drive/jellyfin/Media,target=/Media \**
+    --volume /mnt/drive/jellyfin/cache:/cache \
 
-`  `**--restart=unless-stopped \**
+    --mount type=bind,source=/mnt/drive/jellyfin/Media,target=/Media \
 
-`  `**jellyfin/jellyfin**
+    restart=unless-stopped \
+
+    jellyfin/jellyfin
+
+```
 
 **Imagem do início do processo** 
 
 ![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.004.png)
 
-Instalação Finalizada, rode o comando **docker ps** 
+Instalação Finalizada, rode o comando 
+```console
+docker ps
+```
 
 ![](Aspose.Words.80d35845-c6d4-42f5-b9db-9d41d782c3b4.005.png)
 
@@ -268,29 +292,35 @@ Instalando RCLONE
 
 <https://rclone.org/drive/>
 
-**sudo -v ; curl https://rclone.org/install.sh | sudo bash**
+```console
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
+```
 
 após a instalação rode o comando
 
-`    `**rclone config**
+```console
+rclone config
+```
 
 
 
 Na primeira tela ele pergunta o'que quer fazer? digite **‘n’** Novo Remoto.
 
-**No remotes found, make a new one?**
+```console
+No remotes found, make a new one?
 
-**n) New remote**
+n) New remote
 
-**r) Rename remote**
+r) Rename remote
 
-**c) Copy remote**
+c) Copy remote
 
-**s) Set configuration password**
+s) Set configuration password
 
-**q) Quit config**
+q) Quit config
 
-**n/r/c/s/q> n**
+n/r/c/s/q> n
+```
 
 Em seguida ele pergunta o nome do nosso remoto(drive,cloud qualquer provedor que iremos configurar) de o nome que você quiser, nesse projeto chamaremos de **gdrive**.
 
