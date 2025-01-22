@@ -538,7 +538,7 @@ Ctrl + O pra salvar e Ctrl + X pra sair.
 Agora rode o comando para montagem da unidade.
 
 ```console
-rclone mount --allow-non-empty -v gdrive:/mnt/drive/jellyfin/Media &
+rclone mount gdrive: /media/ --allow-other --daemon
 ```
 
 libere acesso a leitura e gravação na pasta para evitar problema com outros serviços como o jellyfin 
@@ -566,7 +566,7 @@ Se le te perguntar como abrir digite 1 para editar com "nano"
 Adicione essa linha:
 
 ```console
-@reboot sleep 240 && rclone mount --allow-non-empty gdrive: /mnt/drive/jellyfin/Media &
+@reboot sleep 240 && rclone mount gdrive: /media/ --allow-other --daemon
 ```
 
 
